@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="MortgageModule">
+<head>
+    <title>Mimosa</title>
+
+    <link rel="stylesheet" href="/stylesheets/vendor/bootstrap.css"/>
+    <link rel="stylesheet" href="/stylesheets/vendor/bootstrap-responsive.css"/>
+
+    <link rel="stylesheet" href="/stylesheets/vendor/smoothness/jquery-ui-1.10.0.custom.css"/>
+
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/reload-client.js"></script>
+
+    <!--<script src="/javascripts/vendor/require.js" data-main="/javascripts/main.js"></script>-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+    <script src="javascripts/mortgagecalc.js"></script>
+    <script src="javascripts/vendor/jquery.js"></script>
+
+    <script src="javascripts/vendor/jquery-ui-1.10.0.custom.js"></script>
+    <script src="javascripts/vendor/jquery.ui.touch-punch.js"></script>
+
+    <script src="javascripts/vendor/bootstrap.js"></script>
+</head>
+<body>
+
+<div ng-controller="Mortgage">
+    <div class="hero-unit">
+        <h1>Mortgage Calculator</h1>
+
+        <p>Change the values of the three sliders below to calculate your mortgage</p>
+        <br/>
+        <section>
+            <div class="item slider-item">
+                <span>Property price</span> <span class="slider" ng-model="price" slider min="400000" max="1500000"
+                                                  step="50000"></span> {{price | chf}}
+            </div>
+            <div class="item slider-item">
+                <span>Initial capital</span> <span class="slider" ng-model="capital" slider min="100000" max="300000"
+                                                   step="10000"></span> {{capital | chf}}
+            </div>
+            <div class="item slider-item">
+                <span>Interest rate</span> <span class="slider" ng-model="interest" slider min="1" max="6"
+                                                 step="0.1"></span> {{interest}}%<br/>
+            </div>
+            <div class="item">
+                <span>Fixed rate term</span>
+                <span>
+                <div class="btn-group">
+                    <button class="btn" ng-click="interest=1.32">2</button>
+                    <button class="btn" ng-click="interest=1.33">2</button>
+                    <button class="btn" ng-click="interest=1.39">3</button>
+                    <button class="btn" ng-click="interest=1.5">4</button>
+                    <button class="btn" ng-click="interest=1.64">5</button>
+                    <button class="btn" ng-click="interest=1.79">6</button>
+                    <button class="btn" ng-click="interest=1.94">7</button>
+                    <button class="btn" ng-click="interest=2.08">8</button>
+                    <button class="btn" ng-click="interest=2.22">9</button>
+                    <button class="btn" ng-click="interest=2.34">10</button>
+                    <button class="btn" ng-click="interest=2.47">11</button>
+                    <button class="btn" ng-click="interest=2.59">12</button>
+                    <button class="btn" ng-click="interest=2.67">13</button>
+                    <button class="btn" ng-click="interest=2.75">14</button>
+                    <button class="btn" ng-click="interest=2.83">15</button>
+                </div>
+                    </span>
+            </div>
+        </section>
+    </div>
+
+    <section>
+        <header>Equity</header>
+        <div class="item">
+            <span>Investment</span> <span>{{price | chf}}</span>
+        </div>
+
+        <div class="item">
+            <span>Capital</span> <span>{{fondsPropres | chf}}</span>
+        </div>
+
+        <div class="item">
+            <span>Acquisition costs</span> <span>{{fraisDacquisition | chf}}</span>
+        </div>
+
+        <hr/>
+
+        <div class="item">
+            <span>Mortgage amount</span> <span>{{montant | chf}}</span>
+        </div>
+    </section>
+
+    <section>
+        <header>Mortgage</header>
+        <div class="item">
+            <span>Rang I</span> <span>{{rang1 | chf}}</span>
+        </div>
+        <div class="item">
+            <span>Rang II</span> <span>{{rang2 | chf}}</span>
+        </div>
+    </section>
+
+    <section>
+        <header>Annual Charges</header>
+        <div class="item">
+            <span>Interest rang I</span> <span>{{interetsRang1 | chf}}</span>
+        </div>
+        <div class="item">
+            <span>Interest rang II</span> <span>{{interetsRang2 | chf}}</span>
+        </div>
+        <hr/>
+        <div class="item">
+            <span>Amortisation</span> <span>{{amortissements | chf}}</span>
+        </div>
+        <div class="item">
+            <span>Maintenance fees</span> <span>{{entretien | chf}}</span>
+        </div>
+    </section>
+
+    <section>
+        <header>Totals</header>
+        <div class="item">
+            <span>Total annual charges</span> <span>{{totalCharges | chf}}</span>
+        </div>
+        <div class="item">
+            <span>Total monthly charges</span> <span>{{totalMensuel | chf}}</span>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

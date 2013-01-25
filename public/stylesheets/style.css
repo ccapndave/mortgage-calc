@@ -1,0 +1,40 @@
+html {
+	 padding: 20px;
+}
+
+body {
+	font-family: Arial;
+	font-size: 1.1em;
+}
+
+section {
+	padding-bottom: 30px;
+}
+
+.hero-unit section {
+	padding-bottom: 0;
+}
+
+section header {
+	font-weight: bold;
+	padding-bottom: 17px;
+}
+
+section .slider {
+	display: inline-block;
+	width: 330px;
+	margin-right: 20px;
+}
+
+section .slider-item {
+	padding-bottom: 10px;
+}
+
+section div.item span:first-child {
+	display: inline-block;
+	width: 250px;
+}
+
+section div.item span:last-child {
+
+}
